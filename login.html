@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | OmniLayer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            base: '#0a0a0c',
+                            surface: '#121216',
+                            border: '#27272f',
+                            accent1: '#7c3aed',
+                            accent2: '#06b6d4',
+                            lightBase: '#f8fafc',
+                            lightSurface: '#ffffff',
+                            lightBorder: '#e2e8f0',
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.15) 0%, rgba(10, 10, 12, 0) 50%)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body { transition: background-color 0.3s ease, color 0.3s ease; }
+        .dark body { background-color: theme('colors.brand.base'); color: #f3f4f6; }
+        body { background-color: theme('colors.brand.lightBase'); color: #1e293b; }
+        
+        .glass-panel {
+            background: rgba(18, 18, 22, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid theme('colors.brand.border');
+        }
+        .dark .glass-panel { background: rgba(18, 18, 22, 0.6); border-color: theme('colors.brand.border'); }
+        html:not(.dark) .glass-panel { background: rgba(255, 255, 255, 0.8); border-color: theme('colors.brand.lightBorder'); }
+        
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        html:not(.dark) .grid-bg {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+        }
+        
+        .btn-primary { transition: all 0.3s ease; cursor: pointer; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.5); background-color: theme('colors.brand.accent1') !important; color: #ffffff !important; }
+        .dark .btn-primary:hover { box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.4); background-color: theme('colors.brand.accent2') !important; color: #0f172a !important; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div class="fixed inset-0 grid-bg pointer-events-none z-[-1]"></div>
+    <div class="absolute inset-0 bg-hero-glow dark:bg-hero-glow z-[-1]"></div>
+
+    <!-- Theme Toggle (Fixed top right) -->
+    <button id="themeToggle" class="absolute top-6 right-6 text-slate-500 hover:text-brand-accent1 dark:text-slate-400 dark:hover:text-white transition-colors">
+        <svg id="moonIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        <svg id="sunIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+    </button>
+
+    <div class="w-full max-w-md px-4 relative z-10">
+        <div class="text-center mb-8">
+            <a href="index.html" class="inline-flex items-center gap-2 cursor-pointer mb-6 hover:scale-105 transition-transform">
+                <div class="w-10 h-10 rounded bg-gradient-to-br from-brand-accent1 to-brand-accent2 flex items-center justify-center shadow-lg">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <span class="font-bold text-3xl tracking-tight text-slate-900 dark:text-white">OmniLayer</span>
+            </a>
+            <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Welcome back</h1>
+            <p class="text-slate-500 dark:text-slate-400 mt-2">Log in to your command center</p>
+        </div>
+
+        <div class="glass-panel rounded-2xl p-8 shadow-2xl">
+            <form class="space-y-6" action="index.html">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Work Email</label>
+                    <input type="email" placeholder="dev@company.com" class="w-full bg-slate-50 dark:bg-[#0a0a0c] border border-slate-200 dark:border-brand-border rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-accent1 transition-all">
+                </div>
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Password</label>
+                        <a href="#" class="text-sm font-medium text-brand-accent1 dark:text-brand-accent2 hover:underline">Forgot password?</a>
+                    </div>
+                    <input type="password" placeholder="••••••••" class="w-full bg-slate-50 dark:bg-[#0a0a0c] border border-slate-200 dark:border-brand-border rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-accent1 transition-all">
+                </div>
+                <button type="submit" class="btn-primary w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-3 rounded-lg shadow-lg">
+                    Sign In to Console
+                </button>
+            </form>
+
+            <div class="mt-6 relative">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-slate-200 dark:border-brand-border"></div>
+                </div>
+                <div class="relative flex justify-center text-sm">
+                    <span class="px-2 bg-slate-100 dark:bg-[#15151a] text-slate-500 rounded">Or continue with</span>
+                </div>
+            </div>
+
+            <div class="mt-6 grid grid-cols-2 gap-4">
+                <button class="flex items-center justify-center gap-2 bg-slate-50 dark:bg-[#0a0a0c] border border-slate-200 dark:border-brand-border rounded-lg py-2 hover:bg-slate-100 dark:hover:bg-brand-border transition-colors text-slate-700 dark:text-slate-300 font-medium">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
+                    Google
+                </button>
+                <button class="flex items-center justify-center gap-2 bg-slate-50 dark:bg-[#0a0a0c] border border-slate-200 dark:border-brand-border rounded-lg py-2 hover:bg-slate-100 dark:hover:bg-brand-border transition-colors text-slate-700 dark:text-slate-300 font-medium">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </button>
+            </div>
+        </div>
+        <p class="text-center text-sm text-slate-500 dark:text-slate-400 mt-8">
+            Don't have an account? <a href="#" class="text-brand-accent1 dark:text-brand-accent2 font-semibold hover:underline">Request access</a>
+        </p>
+    </div>
+
+    <script>
+        // Theme logic
+        const html = document.documentElement;
+        const themeToggle = document.getElementById('themeToggle');
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+
+        // Check if theme preference is stored or try to get it from index.html (simulated here)
+        // If there's a way to pass it via localStorage, we'd do it. For this static demo we default to dark.
+        
+        function updateThemeIcons() {
+            if (html.classList.contains('dark')) {
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+            } else {
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            updateThemeIcons();
+        });
+
+        // Initialize
+        updateThemeIcons();
+    </script>
+</body>
+</html>
