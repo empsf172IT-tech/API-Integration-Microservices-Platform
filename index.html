@@ -366,51 +366,51 @@
                     </div>
                     
                     <!-- Main Editor Area -->
-                    <div class="col-span-12 lg:col-span-9 flex flex-col">
+                    <div class="col-span-12 lg:col-span-9 flex flex-col min-w-0">
                         <!-- URL Bar -->
-                        <div class="p-4 border-b border-slate-200 dark:border-brand-border flex items-center gap-3">
-                            <select class="bg-slate-100 dark:bg-brand-surface border border-slate-200 dark:border-brand-border text-brand-accent3 dark:text-brand-accent2 font-mono text-sm rounded px-3 py-2 outline-none font-bold">
+                        <div class="p-4 border-b border-slate-200 dark:border-brand-border flex items-center gap-2 sm:gap-3">
+                            <select class="bg-slate-100 dark:bg-brand-surface border border-slate-200 dark:border-brand-border text-brand-accent3 dark:text-brand-accent2 font-mono text-sm rounded px-2 sm:px-3 py-2 outline-none font-bold">
                                 <option>GET</option>
                                 <option>POST</option>
                                 <option>PUT</option>
                             </select>
-                            <input type="text" value="https://api.omnilayer.io/v1/users?limit=50" class="flex-1 bg-transparent border-none outline-none font-mono text-sm text-slate-800 dark:text-slate-200" readonly>
-                            <button class="btn-primary bg-brand-accent3 text-white px-6 py-2 rounded font-semibold text-sm shadow-lg">Send</button>
+                            <input type="text" value="https://api.omnilayer.io/v1/users?limit=50" class="flex-1 min-w-0 text-ellipsis overflow-hidden bg-transparent border-none outline-none font-mono text-sm text-slate-800 dark:text-slate-200" readonly>
+                            <button class="btn-primary bg-brand-accent3 text-white px-4 sm:px-6 py-2 rounded font-semibold text-sm shadow-lg flex-shrink-0">Send</button>
                         </div>
                         
                         <!-- Response Area -->
-                        <div class="flex-1 grid md:grid-cols-2 min-h-[300px]">
+                        <div class="flex-1 grid md:grid-cols-2 min-h-[300px] min-w-0">
                             <!-- Request Params -->
-                            <div class="p-4 border-r border-slate-200 dark:border-brand-border bg-slate-50 dark:bg-[#0a0a0c]">
-                                <div class="flex gap-4 mb-4 border-b border-slate-200 dark:border-brand-border pb-2">
-                                    <button class="text-sm font-medium text-brand-accent1 border-b-2 border-brand-accent1 pb-2 -mb-[9px]">Headers</button>
-                                    <button class="text-sm font-medium text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 pb-2">Auth</button>
-                                    <button class="text-sm font-medium text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 pb-2">Body</button>
+                            <div class="p-4 border-r border-slate-200 dark:border-brand-border bg-slate-50 dark:bg-[#0a0a0c] min-w-0">
+                                <div class="flex gap-4 mb-4 border-b border-slate-200 dark:border-brand-border pb-2 overflow-x-auto">
+                                    <button class="text-sm font-medium text-brand-accent1 border-b-2 border-brand-accent1 pb-2 -mb-[9px] flex-shrink-0">Headers</button>
+                                    <button class="text-sm font-medium text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 pb-2 flex-shrink-0">Auth</button>
+                                    <button class="text-sm font-medium text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 pb-2 flex-shrink-0">Body</button>
                                 </div>
                                 <div class="font-mono text-xs text-slate-600 dark:text-slate-400 space-y-2">
-                                    <div class="flex justify-between border-b border-slate-200 dark:border-brand-border/50 pb-1">
-                                        <span class="text-brand-accent3 dark:text-brand-accent2">Authorization</span>
-                                        <span>Bearer eyJhbGci...</span>
+                                    <div class="flex justify-between gap-4 border-b border-slate-200 dark:border-brand-border/50 pb-1">
+                                        <span class="text-brand-accent3 dark:text-brand-accent2 flex-shrink-0">Authorization</span>
+                                        <span class="truncate">Bearer eyJhbGci...</span>
                                     </div>
-                                    <div class="flex justify-between border-b border-slate-200 dark:border-brand-border/50 pb-1">
-                                        <span class="text-brand-accent3 dark:text-brand-accent2">Content-Type</span>
-                                        <span>application/json</span>
+                                    <div class="flex justify-between gap-4 border-b border-slate-200 dark:border-brand-border/50 pb-1">
+                                        <span class="text-brand-accent3 dark:text-brand-accent2 flex-shrink-0">Content-Type</span>
+                                        <span class="truncate">application/json</span>
                                     </div>
-                                    <div class="flex justify-between border-b border-slate-200 dark:border-brand-border/50 pb-1">
-                                        <span class="text-brand-accent3 dark:text-brand-accent2">X-Omni-Client</span>
-                                        <span>v2.1.0</span>
+                                    <div class="flex justify-between gap-4 border-b border-slate-200 dark:border-brand-border/50 pb-1">
+                                        <span class="text-brand-accent3 dark:text-brand-accent2 flex-shrink-0">X-Omni-Client</span>
+                                        <span class="truncate">v2.1.0</span>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- JSON Response -->
-                            <div class="p-4 bg-slate-900 dark:bg-[#121216]">
-                                <div class="flex justify-between items-center mb-4 border-b border-slate-700 pb-2">
-                                    <div class="text-sm font-medium text-white">Response</div>
-                                    <div class="flex gap-3 text-xs font-mono">
-                                        <span class="text-green-400 flex items-center gap-1"><div class="w-1.5 h-1.5 rounded-full bg-green-400"></div>200 OK</span>
-                                        <span class="text-slate-400">42ms</span>
-                                        <span class="text-slate-400">1.2kb</span>
+                            <div class="p-4 bg-slate-900 dark:bg-[#121216] min-w-0">
+                                <div class="flex flex-wrap justify-between items-center gap-2 mb-4 border-b border-slate-700 pb-2">
+                                    <div class="text-sm font-medium text-white flex-shrink-0">Response</div>
+                                    <div class="flex flex-wrap gap-2 sm:gap-3 text-xs font-mono">
+                                        <span class="text-green-400 flex items-center gap-1 flex-shrink-0"><div class="w-1.5 h-1.5 rounded-full bg-green-400"></div>200 OK</span>
+                                        <span class="text-slate-400 flex-shrink-0">42ms</span>
+                                        <span class="text-slate-400 flex-shrink-0">1.2kb</span>
                                     </div>
                                 </div>
                                 <pre class="font-mono text-xs leading-relaxed text-slate-300 overflow-x-auto"><span class="text-slate-500">{</span>
@@ -624,9 +624,15 @@
                     </div>
                     <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">The definitive global platform for modern API infrastructure and microservices.</p>
                     
-                    <div class="flex items-center gap-2 px-3 py-1.5 rounded bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 inline-block">
-                        <div class="w-2 h-2 rounded-full bg-green-500 inline-block mr-1"></div>
+                    <div class="flex items-center gap-2 px-3 py-1.5 rounded bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 w-max mb-6">
+                        <div class="w-2 h-2 rounded-full bg-green-500"></div>
                         <span class="text-xs font-medium text-green-700 dark:text-green-400">All systems operational</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-6 text-slate-400">
+                        <!-- Social Icons -->
+                        <a href="#" class="hover:text-brand-accent1 dark:hover:text-white transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="#" class="hover:text-brand-accent1 dark:hover:text-white transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                     </div>
                 </div>
 
@@ -672,13 +678,8 @@
                 </div>
             </div>
             
-            <div class="border-t border-slate-200 dark:border-brand-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="border-t border-slate-200 dark:border-brand-border pt-8 flex flex-col justify-center items-center gap-4">
                 <p class="text-sm text-slate-500 dark:text-slate-500">© 2026 OmniLayer Technologies Inc. All rights reserved.</p>
-                <div class="flex gap-4 text-slate-400">
-                    <!-- Social Icons -->
-                    <a href="#" class="hover:text-brand-accent1 dark:hover:text-white transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                    <a href="#" class="hover:text-white transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                </div>
             </div>
         </div>
     </footer>
